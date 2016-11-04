@@ -1,0 +1,20 @@
+﻿<Window x:Class="Robot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Robot"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="820" ResizeMode="NoResize">
+    <Grid >
+        <Canvas x:Name="TableroUI" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Margin="0,0,0,0" MouseDown="Click">
+            
+
+        </Canvas>
+        <Button x:Name="Wall" Content="Wall" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 10, 10 0"/>
+        <Button x:Name="Robot" Content="Robot" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 70, 10 0"/>
+        <Button x:Name="Start" Content="Start" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 130, 10 0"/>
+        <Button x:Name="Next" Content="Next" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,190,10,0"/>
+    </Grid>
+    
+</Window>
