@@ -17,13 +17,17 @@ namespace Robot
         // Indica la orientacio del N del robot respecte al tauler
         coord direccio;
 
+
+        //Semafor per la pausa de l'execucio
+        static bool sem;
+
         public Robot(int x, int y, Tablero t)
         {
             this.x = x;
             this.y = y;
             direccio = coord.N;
 
-            sensors[(int)coord.N] = t.getCell(x , y - 1);
+            sensors[(int)coord.N] = t.getCell(x, y - 1);
             sensors[(int)coord.E] = t.getCell(x + 1, y);
             sensors[(int)coord.S] = t.getCell(x, y + 1);
             sensors[(int)coord.W] = t.getCell(x - 1, y);
@@ -33,10 +37,38 @@ namespace Robot
             {
                 memoria[(int)c] = 0;
             }
+
         }
+
+        public int X {
+            get { return x; }
+            set { }
+        }
+
+        public int Y
+        {
+            get { return y; }
+            set { }
+        }
+
+        public int[] Sensors
+        {
+            get { return sensors; }
+            set { }
+        }
+
+        public int[] Memoria
+        {
+            get { return memoria; }
+            set { }
+        }
+
+
 
         public void move(Tablero t)
         {
+            //TODO: Semaforo
+
             //Actualitzacio dels sensors i la memoria
             update(t);
 
@@ -48,19 +80,25 @@ namespace Robot
             {
                 if(sensors[N] == 0)
                 {
-                    //Avanzar
+                    //Avançam
+                    t.setCell(x, y, 0);
+                    calculaAvance(ref x, ref y);
+                    t.setCell(x , y, 2);
                 } else
                 {
-                    //Rotar hacia el este
+                    direccio += 1;
                 }
             } else
             {
                 if (memoria[W] == 0 && sensors[N] == 0)
                 {
-                    //Avanzar
+                    //Avançam
+                    t.setCell(x, y, 0);
+                    calculaAvance(ref x, ref y);
+                    t.setCell(x, y, 2);
                 } else
                 {
-                    //Rotar hacia el oeste
+                    direccio -= 1;
                 }
             }
         }
@@ -78,6 +116,50 @@ namespace Robot
             sensors[(int)coord.E] = t.getCell(x + 1, y);
             sensors[(int)coord.S] = t.getCell(x, y + 1);
             sensors[(int)coord.W] = t.getCell(x - 1, y);            
+        }
+
+        private void calculaAvance(ref int x, ref int y)
+        {
+            switch (direccio)
+            {
+                case coord.N:
+                    y -= 1;
+                    break;
+                case coord.E:
+                    x += 1;
+                    break;
+                case coord.S:
+                    y += 1;
+                    break;
+                case coord.W:
+                    x -= 1;
+                    break;
+            }
+        }
+
+        public override string ToString()
+        {
+            string sensorsActius = "";
+            var coords = Enum.GetValues(typeof(coord));
+            foreach (coord c in coords)
+            {                
+                if(sensors[(int)c] != 0)
+                {
+                    sensorsActius += c.ToString() + " ";
+                }
+            }
+
+
+            string memoriaAciva = "";            
+            foreach (coord c in coords)
+            {
+                if (sensors[(int)c] != 0)
+                {
+                    memoriaAciva += c.ToString() + " ";
+                }
+            }
+
+            return string.Format("Robot en posicio ({0}, {1}): \n\tDireccio: {2} \n\tSensors actius: {3} \n\tSensors actius memoria: {4}. \n\n", x, y, direccio.ToString(), sensorsActius, memoriaAciva);
         }
     }
 }
