@@ -22,6 +22,9 @@ namespace Robot
         }
 
         public int getCell(int x, int y){
+            if (x < 0 || y < 0 || x >= length || y >= length) {
+                return 1;
+            }
             return tablero[x, y];
         }
 
