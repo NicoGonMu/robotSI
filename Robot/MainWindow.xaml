@@ -7,15 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="820" ResizeMode="NoResize">
     <Grid >
-        <Canvas x:Name="TableroUI" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Margin="0,0,0,0" MouseDown="Click">
-
-
-        </Canvas>
-        <Button x:Name="Wall" Content="Wall" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,9.6,0" Click="selectWall"/>
+        <Canvas x:Name="TableroUI" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="0,0,0,0" MouseDown="Click"/>
+        <Rectangle x:Name="Separator" Fill="#ffffff" Height="2" Stroke="Black" Width="100" Margin="0,210,10,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Button x:Name="Wall" Content="Wall" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="selectWall"/>
         <Button x:Name="Robot" Content="Robot" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 70, 10 0" Click="selectRobot"/>
         <Button x:Name="Remove" Content="Remove" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 130, 10 0" Click="removeSelection"/>
-        <Button x:Name="Start" Content="Start" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 190, 10 0"/>
-        <Button x:Name="Next" Content="Next" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,250,10,0"/>
+        <Button x:Name="Start" Content="Start" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 250, 10 0"/>
+        <Button x:Name="Next" Content="Next" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,310,10,0"/>
     </Grid>
 
 </Window>

@@ -40,20 +40,10 @@ namespace Robot
         }
 
         public void clickInTablero(int x, int y, int type) {
-            if (type == 0) {
+            if (type == 0 || type == tablero[x, y] || type == tablero[x, y]) {
+                tablero[x, y] = 0;
+            } else if (type != 0 && tablero[x,y] == 0) {
                 tablero[x, y] = type;
-            } else if (type == 1) {
-                if (tablero[x, y] == 1) {
-                    tablero[x, y] = 0;
-                } else{
-                    tablero[x, y] = 1;
-                }
-            } else if (type == 2) {
-                if (tablero[x, y] == 2) {
-                    tablero[x, y] = 0;
-                } else {
-                    tablero[x, y] = 2;
-                }
             }
         }
 

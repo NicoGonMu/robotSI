@@ -65,7 +65,6 @@ namespace Robot {
         void Click(object sender, MouseEventArgs e) {
             Point point = e.GetPosition(this);
             double size = ((TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length);
-            MessageBox.Show(type+"");
             tablero.clickInTablero((int) (point.X / size), (int)(point.Y / size), type);
             paint();
         }
