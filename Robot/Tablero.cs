@@ -36,26 +36,26 @@ namespace Robot
             }
         }
 
-        public void clickInTablero(int x, int y, bool robot){
-            if (tablero[x, y] == 0 & !robot){
-                addWall(x, y);
-            }else if (tablero[x, y] == 0){
-                addRobot(x, y);
-            }else{
-                removeCell(x, y);
+        public void clickInTablero(int x, int y, int type) {
+            if (type == 0) {
+                tablero[x, y] = type;
+            } else if (type == 1) {
+                if (tablero[x, y] == 1) {
+                    tablero[x, y] = 0;
+                } else{
+                    tablero[x, y] = 1;
+                }
+            } else if (type == 2) {
+                if (tablero[x, y] == 2) {
+                    tablero[x, y] = 0;
+                } else {
+                    tablero[x, y] = 2;
+                }
             }
         }
 
-        private void addWall(int x, int y){
-            tablero[x, y] = 1;
-        }
-
-        private void addRobot(int x, int y){
-            tablero[x, y] = 2;
-        }
-
-        private void removeCell(int x, int y){
-            tablero[x, y] = 0;
+        public void setCell(int x, int y, int type) {
+            tablero[x, y] = type;
         }
 
     }

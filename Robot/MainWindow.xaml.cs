@@ -20,6 +20,7 @@ namespace Robot {
     public partial class MainWindow : Window {
 
         Tablero tablero;
+        int type = 0;
 
         public MainWindow() {
             InitializeComponent();
@@ -27,15 +28,11 @@ namespace Robot {
 
             tablero = new Tablero(18);
             paint();
-
-
         }
 
-        void paint()
-        {
+        void paint() {
             TableroUI.Children.Clear();
-            for (int i = 0; i < tablero.Length; i++)
-            {
+            for (int i = 0; i < tablero.Length; i++) {
                 for (int j = 0; j < tablero.Length; j++) {
                     Image image = new Image();
                     int cell = tablero.getCell(i, j);
@@ -51,16 +48,35 @@ namespace Robot {
                     image.Margin = new Thickness(image.Width * i, image.Height * j, image.Width * (i + 1), image.Height * (j + 1));
                     TableroUI.Children.Add(image);
                 }
-            }
-            
+            }         
         }
 
-        void Click(object sender, MouseEventArgs e)
-        {
+        void Click(object sender, MouseEventArgs e) {
             Point point = e.GetPosition(this);
             double size = ((TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length);
-            tablero.clickInTablero((int) (point.X / size), (int)(point.Y / size), false);
+            tablero.clickInTablero((int) (point.X / size), (int)(point.Y / size), type);
             paint();
+        }
+
+        void selectWall(object sender, RoutedEventArgs e) {
+            if (type == 1) {
+                
+                type = 0;
+            } else {
+                type = 1;
+            }
+        }
+
+        void selectRobot(object sender, RoutedEventArgs e) {
+            if (type == 2) {
+                type = 0;
+            } else {
+                type = 2;
+            }
+        }
+
+        void removeSelection(object sender, RoutedEventArgs e) {
+            type = 0;
         }
     }
 }
