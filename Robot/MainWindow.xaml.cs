@@ -38,8 +38,7 @@ namespace PracticaRobot
             paint();
 
             bg.DoWork += runAllRobots;
-            bg.ProgressChanged += asyncPaint;
-            bg.RunWorkerAsync();
+            bg.ProgressChanged += asyncPaint;            
             bg.WorkerReportsProgress = true;
         }
 
@@ -174,6 +173,8 @@ namespace PracticaRobot
                 }
 
                 bg.ReportProgress(0);
+
+                Thread.Sleep(200);
             }
         }
 

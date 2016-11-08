@@ -40,7 +40,8 @@ namespace PracticaRobot
 
         }
 
-        public int X {
+        public int X
+        {
             get { return x; }
             set { }
         }
@@ -77,33 +78,20 @@ namespace PracticaRobot
             int W = ((int)direccio + 3) % 4;
             int N = (int)direccio;
 
-            if (sensors[W] != 0) 
+            if (sensors[N] != 0 && (sensors[W] != 0 || memoria[W] == 0))
             {
-                if(sensors[N] == 0)
-                {
-                    //Avançam
-                    t.setCell(x, y, 0);
-                    calculaAvance(ref x, ref y);
-                    t.setCell(x , y, 2);
-                } else
-                {
-                    direccio = (coord)(((int)direccio + 1) % 4);
-                }
-            } else
+                direccio = (coord)(((int)direccio + 1) % 4);
+            }
+            else if (sensors[W] == 0 && memoria[W] != 0)
             {
-                if (memoria[W] == 0 && sensors[N] == 0)
-                {
-                    //Avançam
-                    t.setCell(x, y, 0);
-                    calculaAvance(ref x, ref y);
-                    t.setCell(x, y, 2);
-                } else if (sensors[N] != 0)
-                {
-                    direccio = (coord)(((int)direccio + 1) % 4);
-                } else
-                {                   
-                    direccio = (coord)(((int)direccio + 3) % 4);
-                }
+                direccio = (coord)(((int)direccio + 3) % 4);
+            }
+            else
+            {
+                //Avançam
+                t.setCell(x, y, 0);
+                calculaAvance(ref x, ref y);
+                t.setCell(x, y, 2);
             }
         }
 
@@ -115,11 +103,11 @@ namespace PracticaRobot
                 int i = (int)c;
                 memoria[i] = sensors[i];
             }
-            
+
             sensors[(int)coord.N] = t.getCell(x, y - 1);
             sensors[(int)coord.E] = t.getCell(x + 1, y);
             sensors[(int)coord.S] = t.getCell(x, y + 1);
-            sensors[(int)coord.W] = t.getCell(x - 1, y);            
+            sensors[(int)coord.W] = t.getCell(x - 1, y);
         }
 
         private void calculaAvance(ref int x, ref int y)
@@ -146,15 +134,15 @@ namespace PracticaRobot
             string sensorsActius = "";
             var coords = Enum.GetValues(typeof(coord));
             foreach (coord c in coords)
-            {                
-                if(sensors[(int)c] != 0)
+            {
+                if (sensors[(int)c] != 0)
                 {
                     sensorsActius += c.ToString() + " ";
                 }
             }
 
 
-            string memoriaAciva = "";            
+            string memoriaAciva = "";
             foreach (coord c in coords)
             {
                 if (sensors[(int)c] != 0)
