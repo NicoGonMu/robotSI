@@ -28,6 +28,7 @@ namespace PracticaRobot
         Tablero tablero;
         List<Robot> robotList = new List<Robot>();
         int type = 0;
+        bool paused = true;
 
         public MainWindow()
         {
@@ -126,12 +127,21 @@ namespace PracticaRobot
 
         void startProcess(object sender, RoutedEventArgs e)
         {
-            if (robotList.Count == 0)
+            if (paused)
             {
-                return;
-            }
+                Start.Content = "Pause";
+                paused = false;
+                if (robotList.Count == 0)
+                {
+                    return;
+                }
 
-            bg.RunWorkerAsync(0);
+                bg.RunWorkerAsync(0);
+            }
+            else {
+                paused = true;
+                Start.Content = "Start";
+            }
         }
 
         void stepProcess(object sender, RoutedEventArgs e)
@@ -160,7 +170,7 @@ namespace PracticaRobot
 
         private void runAllRobots(object sender, DoWorkEventArgs e)
         {
-            while (true)
+            while (!paused)
             {
                 if (robotList.Count == 0)
                 {
@@ -170,6 +180,7 @@ namespace PracticaRobot
                 foreach (Robot r in robotList)
                 {
                     r.move(tablero);
+
                 }
 
                 bg.ReportProgress(0);

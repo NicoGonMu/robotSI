@@ -68,8 +68,6 @@ namespace PracticaRobot
 
         public void move(Tablero t)
         {
-            //TODO: Semaforo
-
 
             //Actualitzacio dels sensors i la memoria
             update(t);
