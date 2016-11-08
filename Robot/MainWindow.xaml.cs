@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Robot {
+namespace PracticaRobot {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
 
         Tablero tablero;
+        List<Robot> robotList = new List<Robot>();
         int type = 0;
 
         public MainWindow() {
@@ -65,7 +67,11 @@ namespace Robot {
         void Click(object sender, MouseEventArgs e) {
             Point point = e.GetPosition(this);
             double size = ((TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length);
-            tablero.clickInTablero((int) (point.X / size), (int)(point.Y / size), type);
+
+            int x = (int)(point.X / size);
+            int y = (int)(point.Y / size);
+            tablero.clickInTablero(x, y, type);     
+            if(type == 2) { robotList.Add(new Robot(x, y, ref tablero)); }
             paint();
         }
 
@@ -91,6 +97,35 @@ namespace Robot {
                 Remove.Background = Brushes.LightGray;
                 type = 2;
             }
+        }
+
+        void startProcess(object sender, RoutedEventArgs e) {
+            if (robotList.Count == 0)
+            {
+                return;
+            }
+
+            List<Thread> threadList = new List<Thread>();
+            foreach(Robot r in robotList)
+            {
+                Thread t = new Thread(() => r.move(tablero));
+                t.Start();
+            }
+        }
+
+        void stepProcess(object sender, RoutedEventArgs e)
+        {
+            if (robotList.Count == 0)
+            {
+                return;
+            }
+            
+            foreach (Robot r in robotList)
+            {
+                r.move(tablero);
+            }
+
+            paint();
         }
 
         void removeSelection(object sender, RoutedEventArgs e) {

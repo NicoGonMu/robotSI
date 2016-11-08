@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Robot
+namespace PracticaRobot
 {
     class Robot
     {
@@ -21,7 +21,7 @@ namespace Robot
         //Semafor per la pausa de l'execucio
         static bool sem;
 
-        public Robot(int x, int y, Tablero t)
+        public Robot(int x, int y, ref Tablero t)
         {
             this.x = x;
             this.y = y;
@@ -69,12 +69,13 @@ namespace Robot
         {
             //TODO: Semaforo
 
+
             //Actualitzacio dels sensors i la memoria
             update(t);
 
             //Obtencio de les coordenades relatives al robot
             int W = ((int)direccio + 3) % 4;
-            int N = (int)direccio;
+            int N = ((int)direccio + 2) % 4;
 
             if (sensors[W] != 0) 
             {
@@ -86,7 +87,7 @@ namespace Robot
                     t.setCell(x , y, 2);
                 } else
                 {
-                    direccio += 1;
+                    direccio = (coord)(((int)direccio + 1) % 4);
                 }
             } else
             {
@@ -97,8 +98,8 @@ namespace Robot
                     calculaAvance(ref x, ref y);
                     t.setCell(x, y, 2);
                 } else
-                {
-                    direccio -= 1;
+                {                   
+                    direccio = (coord)(((int)direccio + 3) % 4);
                 }
             }
         }
