@@ -75,7 +75,7 @@ namespace PracticaRobot
 
             //Obtencio de les coordenades relatives al robot
             int W = ((int)direccio + 3) % 4;
-            int N = ((int)direccio + 2) % 4;
+            int N = (int)direccio;
 
             if (sensors[W] != 0) 
             {
@@ -97,6 +97,9 @@ namespace PracticaRobot
                     t.setCell(x, y, 0);
                     calculaAvance(ref x, ref y);
                     t.setCell(x, y, 2);
+                } else if (sensors[N] != 0)
+                {
+                    direccio = (coord)(((int)direccio + 1) % 4);
                 } else
                 {                   
                     direccio = (coord)(((int)direccio + 3) % 4);
@@ -112,7 +115,7 @@ namespace PracticaRobot
                 int i = (int)c;
                 memoria[i] = sensors[i];
             }
-
+            
             sensors[(int)coord.N] = t.getCell(x, y - 1);
             sensors[(int)coord.E] = t.getCell(x + 1, y);
             sensors[(int)coord.S] = t.getCell(x, y + 1);
