@@ -39,7 +39,7 @@ namespace PracticaRobot
 
             tablero = new Tablero(18);
             paint();
-
+            vel.Text = 7 - velocitat / 100 + "";
             bg.DoWork += runAllRobots;
             bg.ProgressChanged += asyncPaint;
             bg.WorkerReportsProgress = true;
@@ -124,15 +124,17 @@ namespace PracticaRobot
             }
         }
 
-        void incVel(object sender, RoutedEventArgs e)
+        void decVel(object sender, RoutedEventArgs e)
         {
-            if (velocitat < 600) velocitat += 100;            
+            if (velocitat < 600) velocitat += 100;
+            vel.Text = 7 - velocitat / 100 + "";
         }
 
 
-        void decVel(object sender, RoutedEventArgs e)
+        void incVel(object sender, RoutedEventArgs e)
         {
-            if (velocitat > 100) velocitat -= 100;            
+            if (velocitat > 100) velocitat -= 100;
+            vel.Text = 7 - velocitat / 100 + "";
         }
 
 
