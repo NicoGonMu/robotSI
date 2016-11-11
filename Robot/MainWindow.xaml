@@ -8,6 +8,7 @@
         Title="MainWindow" Height="720" Width="820" ResizeMode="NoResize">
     <Grid >
         <Canvas x:Name="TableroUI" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="0,0,0,0" MouseDown="Click">
+            <Image x:Name="image" Height="25" Canvas.Left="740" Canvas.Top="400" Width="25"/>
         </Canvas>
         <Rectangle x:Name="Separator" Fill="#ffffff" Height="2" Stroke="Black" Width="100" Margin="0,210,10,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
         <Button x:Name="Wall" Content="Wall" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="selectWall"/>
