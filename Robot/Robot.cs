@@ -16,11 +16,7 @@ namespace PracticaRobot
 
         // Indica la orientacio del N del robot respecte al tauler
         coord direccio;
-
-
-        //Semafor per la pausa de l'execucio
-        static bool sem;
-
+              
         public Robot(int x, int y, ref Tablero t)
         {
             this.x = x;

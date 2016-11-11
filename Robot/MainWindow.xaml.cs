@@ -28,7 +28,9 @@ namespace PracticaRobot
         Tablero tablero;
         List<Robot> robotList = new List<Robot>();
         int type = 0;
+        int velocitat = 200;
         bool paused = true;
+
 
         public MainWindow()
         {
@@ -39,7 +41,7 @@ namespace PracticaRobot
             paint();
 
             bg.DoWork += runAllRobots;
-            bg.ProgressChanged += asyncPaint;            
+            bg.ProgressChanged += asyncPaint;
             bg.WorkerReportsProgress = true;
         }
 
@@ -125,6 +127,18 @@ namespace PracticaRobot
             }
         }
 
+        void incVel(object sender, RoutedEventArgs e)
+        {
+            if (velocitat < 600) velocitat += 100;            
+        }
+
+
+        void decVel(object sender, RoutedEventArgs e)
+        {
+            if (velocitat > 100) velocitat -= 100;            
+        }
+
+
         void startProcess(object sender, RoutedEventArgs e)
         {
             if (paused)
@@ -185,7 +199,7 @@ namespace PracticaRobot
 
                 bg.ReportProgress(0);
 
-                Thread.Sleep(200);
+                Thread.Sleep(velocitat);
             }
         }
 
