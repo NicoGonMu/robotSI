@@ -72,8 +72,7 @@ namespace PracticaRobot
             }
             foreach (Robot r in robotList) {
 
-                var uri = new Uri("pack://application:,,,/Textures/"+r.coord+"robot.png");
-              
+                var uri = new Uri("pack://application:,,,/Textures/"+r.direccio.ToString() + "robot.png");
                 Image image = new Image();
                 image.Source = new BitmapImage(uri);
                 image.Width = size;

@@ -8,14 +8,14 @@ namespace PracticaRobot
 {
     class Robot
     {
-        private enum coord { N, E, S, W }
+        public enum coord { N, E, S, W }
         int[] sensors = new int[4];
         int[] memoria = new int[4];
         int x;
         int y;
 
         // Indica la orientacio del N del robot respecte al tauler
-        coord direccio;
+        public coord direccio;
               
         public Robot(int x, int y, ref Tablero t)
         {

@@ -104,7 +104,10 @@
     <Resource Include="Textures\wall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Textures\robot.png" />
+    <Resource Include="Textures\Erobot.png" />
+    <Resource Include="Textures\Nrobot.png" />
+    <Resource Include="Textures\Srobot.png" />
+    <Resource Include="Textures\Wrobot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
