@@ -81,6 +81,125 @@ namespace PracticaRobot
                 image.Margin = new Thickness(image.Width * r.X, image.Height * r.Y, image.Width * (r.X + 1), image.Height * (r.Y + 1));
                 TableroUI.Children.Add(image);
             }
+
+            paintInternState();
+        }
+
+        void paintInternState() {
+            if (robotList.Count != 0) {
+                Robot r = robotList[0];
+                int N = (int)r.direccio;
+                int W = ((int)r.direccio + 3) % 4;
+                int E = ((int)r.direccio + 1) % 4;
+                int S = ((int)r.direccio + 2) % 4;
+                Image image = new Image();
+                if (r.Sensors[N] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Ngreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Nredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(730, 400, 760, 430);
+                TableroUI.Children.Add(image);
+
+                image = new Image();
+                if (r.Sensors[S] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Sgreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Sredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(730, 460, 760, 490);
+                TableroUI.Children.Add(image);
+
+                image = new Image();
+                if (r.Sensors[E] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Egreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Eredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(760, 430, 790, 460);
+                TableroUI.Children.Add(image);
+
+                image = new Image();
+                if (r.Sensors[W] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Wgreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Wredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(700, 430, 730, 430);
+                TableroUI.Children.Add(image);
+
+                N = (int)r.direccioAnt;
+                W = ((int)r.direccioAnt + 3) % 4;
+                E = ((int)r.direccioAnt + 1) % 4;
+                S = ((int)r.direccioAnt + 2) % 4;
+                image = new Image();
+                if (r.Memoria[N] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Ngreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Nredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(730, 500, 760, 530);
+                TableroUI.Children.Add(image);
+
+                image = new Image();
+                if (r.Memoria[S] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Sgreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Sredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(730, 560, 760, 590);
+                TableroUI.Children.Add(image);
+
+                image = new Image();
+                if (r.Memoria[E] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Egreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Eredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(760, 530, 790, 560);
+                TableroUI.Children.Add(image);
+
+                image = new Image();
+                if (r.Memoria[W] == 0) {
+                    var uri = new Uri("pack://application:,,,/Textures/Wgreenarrow.png");
+                    image.Source = new BitmapImage(uri);
+                } else {
+                    var uri = new Uri("pack://application:,,,/Textures/Wredarrow.png");
+                    image.Source = new BitmapImage(uri);
+                }
+                image.Width = 30;
+                image.Height = 30;
+                image.Margin = new Thickness(700, 530, 730, 530);
+                TableroUI.Children.Add(image);
+            }
         }
 
         void Click(object sender, MouseEventArgs e)

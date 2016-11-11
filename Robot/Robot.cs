@@ -17,6 +17,8 @@ namespace PracticaRobot
 
         // Indica la orientacio del N del robot respecte al tauler
         public coord direccio;
+        public coord direccioAnt;
+
               
         public Robot(int x, int y, int id, ref Tablero t)
         {
@@ -67,8 +69,8 @@ namespace PracticaRobot
         public void move(Tablero t)
         {
 
-            //Actualitzacio dels sensors i la memoria
-            update(t);
+            //Actualitzacio dels sensors 
+            updateSensors(t);
 
             //Obtencio de les coordenades relatives al robot
             int W = ((int)direccio + 3) % 4;
@@ -89,11 +91,21 @@ namespace PracticaRobot
                 calculaAvance(ref x, ref y);
                 t.setCell(x, y, 2);
             }
+            //Actualitzacio dels sensors i la memoria
+            update(t);
+        }
+
+        private void updateSensors(Tablero t) {
+            sensors[(int)coord.N] = t.getCell(x, y - 1);
+            sensors[(int)coord.E] = t.getCell(x + 1, y);
+            sensors[(int)coord.S] = t.getCell(x, y + 1);
+            sensors[(int)coord.W] = t.getCell(x - 1, y);
         }
 
         private void update(Tablero t)
         {
             var coords = Enum.GetValues(typeof(coord));
+            direccioAnt = direccio;
             foreach (coord c in coords)
             {
                 int i = (int)c;

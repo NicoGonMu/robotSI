@@ -109,6 +109,16 @@
     <Resource Include="Textures\Srobot.png" />
     <Resource Include="Textures\Wrobot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Textures\Egreenarrow.png" />
+    <Resource Include="Textures\Eredarrow.png" />
+    <Resource Include="Textures\Ngreenarrow.png" />
+    <Resource Include="Textures\Nredarrow.png" />
+    <Resource Include="Textures\Sgreenarrow.png" />
+    <Resource Include="Textures\Sredarrow.png" />
+    <Resource Include="Textures\Wgreenarrow.png" />
+    <Resource Include="Textures\Wredarrow.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
