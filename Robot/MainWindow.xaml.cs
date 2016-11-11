@@ -45,43 +45,41 @@ namespace PracticaRobot
             bg.WorkerReportsProgress = true;
         }
 
-        void paint()
-        {
+        void paint() {
             TableroUI.Children.Clear();
-            for (int i = 0; i < tablero.Length; i++)
-            {
-                for (int j = 0; j < tablero.Length; j++)
-                {
+            int size =  (int) ((TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length);
+            for (int i = 0; i < tablero.Length; i++) {
+                for (int j = 0; j < tablero.Length; j++) {
                     Image image = new Image();
                     int cell = tablero.getCell(i, j);
-                    if (cell == 0)
-                    {
+                    if (cell == 0) {
                         var uri = new Uri("pack://application:,,,/Textures/floor.png");
                         image.Source = new BitmapImage(uri);
                     }
-                    else if (cell == 1)
-                    {
+                    else if (cell == 1) {
                         var uri = new Uri("pack://application:,,,/Textures/wall.png");
                         image.Source = new BitmapImage(uri);
                     }
-                    else if (cell == 2)
-                    {
-                        var bguri = new Uri("pack://application:,,,/Textures/floor.png");
-                        Image bg = new Image();
-                        bg.Source = new BitmapImage(bguri);
-                        bg.Width = (TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length;
-                        bg.Height = bg.Width;
-                        bg.Margin = new Thickness(bg.Width * i, bg.Height * j, bg.Width * (i + 1), bg.Height * (j + 1));
-                        TableroUI.Children.Add(bg);
-
-                        var uri = new Uri("pack://application:,,,/Textures/robot.png");
+                    else if (cell == 2) {
+                        var uri = new Uri("pack://application:,,,/Textures/floor.png");
                         image.Source = new BitmapImage(uri);
                     }
-                    image.Width = (TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length;
+                    image.Width = size;
                     image.Height = image.Width;
                     image.Margin = new Thickness(image.Width * i, image.Height * j, image.Width * (i + 1), image.Height * (j + 1));
                     TableroUI.Children.Add(image);
                 }
+            }
+            foreach (Robot r in robotList) {
+
+                var uri = new Uri("pack://application:,,,/Textures/"+r.coord+"robot.png");
+              
+                Image image = new Image();
+                image.Source = new BitmapImage(uri);
+                image.Width = size;
+                image.Height = image.Width;
+                image.Margin = new Thickness(image.Width * r.X, image.Height * r.Y, image.Width * (r.X + 1), image.Height * (r.Y + 1));
+                TableroUI.Children.Add(image);
             }
         }
 
