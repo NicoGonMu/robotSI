@@ -47,7 +47,7 @@ namespace PracticaRobot
 
         void paint() {
             TableroUI.Children.Clear();
-            int size =  (int) ((TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length);
+            double size =  (TableroUI.ActualHeight < TableroUI.ActualWidth - 100) ? TableroUI.ActualHeight / tablero.Length : (TableroUI.ActualWidth - 100) / tablero.Length;
             for (int i = 0; i < tablero.Length; i++) {
                 for (int j = 0; j < tablero.Length; j++) {
                     Image image = new Image();
