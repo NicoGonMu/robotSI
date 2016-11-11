@@ -13,14 +13,16 @@ namespace PracticaRobot
         int[] memoria = new int[4];
         int x;
         int y;
+        int id;
 
         // Indica la orientacio del N del robot respecte al tauler
         public coord direccio;
               
-        public Robot(int x, int y, ref Tablero t)
+        public Robot(int x, int y, int id, ref Tablero t)
         {
             this.x = x;
             this.y = y;
+            this.id = id;
             direccio = coord.N;
 
             sensors[(int)coord.N] = t.getCell(x, y - 1);
@@ -146,6 +148,12 @@ namespace PracticaRobot
             }
 
             return string.Format("Robot en posicio ({0}, {1}): \n\tDireccio: {2} \n\tSensors actius: {3} \n\tSensors actius memoria: {4}. \n\n", x, y, direccio.ToString(), sensorsActius, memoriaAciva);
+        }
+
+        public override bool Equals(object obj)
+        {
+            Robot r = (Robot)obj;
+            return (x == r.x) && (y == r.y);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace PracticaRobot
         Tablero tablero;
         List<Robot> robotList = new List<Robot>();
         int type = 0;
+        int lastRobot = 2;
         int velocitat = 200;
         bool paused = true;
 
@@ -89,8 +90,8 @@ namespace PracticaRobot
 
             int x = (int)(point.X / size);
             int y = (int)(point.Y / size);
-            tablero.clickInTablero(x, y, type);
-            if (type == 2) { robotList.Add(new Robot(x, y, ref tablero)); }
+            bool occupied = tablero.clickInTablero(x, y, type);
+            if (type >= 2) { handleRobotList(x, y, occupied); }
             paint();
         }
 
@@ -111,7 +112,7 @@ namespace PracticaRobot
 
         void selectRobot(object sender, RoutedEventArgs e)
         {
-            if (type == 2)
+            if (type >= 2)
             {
                 Robot.Background = Brushes.LightGray;
                 type = 0;
@@ -120,7 +121,8 @@ namespace PracticaRobot
                 Robot.Background = Brushes.Gray;
                 Wall.Background = Brushes.LightGray;
                 Remove.Background = Brushes.LightGray;
-                type = 2;
+                type = lastRobot;
+                lastRobot += 1;
             }
         }
 
@@ -207,5 +209,17 @@ namespace PracticaRobot
             paint();
         }
 
+        private void handleRobotList(int x, int y, bool occupied)
+        {
+            if (occupied)
+            {
+                robotList.Remove(new Robot(x, y, lastRobot, ref tablero));
+            }
+            else
+            {
+                robotList.Add(new Robot(x, y, lastRobot, ref tablero));
+                lastRobot++;
+            }
+        }
     }
 }

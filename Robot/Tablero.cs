@@ -39,12 +39,15 @@ namespace PracticaRobot
             }
         }
 
-        public void clickInTablero(int x, int y, int type) {
-            if (type == 0 || type == tablero[x, y] || type == tablero[x, y]) {
-                tablero[x, y] = 0;
+        public bool clickInTablero(int x, int y, int type) {
+            bool ret = tablero[x, y] > 0;
+            if (type == tablero[x, y] || (type >= 2) && (tablero[x, y] >= 2)) {
+                tablero[x, y] = 0;                
+
             } else if (type != 0 && tablero[x,y] == 0) {
-                tablero[x, y] = type;
+                tablero[x, y] = type;                             
             }
+            return ret;
         }
 
         public void setCell(int x, int y, int type) {
