@@ -8,7 +8,7 @@
         Title="MainWindow" Height="720" Width="820" ResizeMode="NoResize">
     <Grid >
         <Canvas x:Name="TableroUI" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="0,0,0,0" MouseDown="Click">
-            <Image x:Name="image" Height="25" Canvas.Left="740" Canvas.Top="400" Width="25"/>
+
         </Canvas>
         <Rectangle x:Name="Separator" Fill="#ffffff" Height="2" Stroke="Black" Width="100" Margin="0,210,10,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
         <Button x:Name="Wall" Content="Wall" Width="100" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="selectWall"/>
@@ -19,6 +19,8 @@
         <Button x:Name="inc" Content="+" Width="25" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="incVel" Margin="0,371,9.6,0"/>
         <Button x:Name="dec" Content="-" Width="25" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="decVel" Margin="0,372,84.6,0"/>
         <TextBlock x:Name="vel" Height="25" TextWrapping="Wrap" Margin="734,372,39.6,293.4"/>
+        <TextBlock x:Name="Sensores" Canvas.Left="707" TextWrapping="Wrap" Text="Sensores" Canvas.Top="409" Margin="704,412,9.6,253.4"/>
+        <TextBlock x:Name="Memoria" Canvas.Left="707" TextWrapping="Wrap" Text="Memoria" Canvas.Top="409" Margin="704,542,9.6,123.4"/>
     </Grid>
 
 </Window>

@@ -102,7 +102,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(730, 400, 760, 430);
+                image.Margin = new Thickness(730, 440, 760, 470);
                 TableroUI.Children.Add(image);
 
                 image = new Image();
@@ -115,7 +115,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(730, 460, 760, 490);
+                image.Margin = new Thickness(730, 500, 760, 530);
                 TableroUI.Children.Add(image);
 
                 image = new Image();
@@ -128,7 +128,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(760, 430, 790, 460);
+                image.Margin = new Thickness(760, 470, 790, 500);
                 TableroUI.Children.Add(image);
 
                 image = new Image();
@@ -141,7 +141,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(700, 430, 730, 430);
+                image.Margin = new Thickness(700, 470, 730, 500);
                 TableroUI.Children.Add(image);
 
                 N = (int)r.direccioAnt;
@@ -158,7 +158,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(730, 500, 760, 530);
+                image.Margin = new Thickness(730, 570, 760, 600);
                 TableroUI.Children.Add(image);
 
                 image = new Image();
@@ -171,7 +171,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(730, 560, 760, 590);
+                image.Margin = new Thickness(730, 630, 760, 660);
                 TableroUI.Children.Add(image);
 
                 image = new Image();
@@ -184,7 +184,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(760, 530, 790, 560);
+                image.Margin = new Thickness(760, 600, 790, 630);
                 TableroUI.Children.Add(image);
 
                 image = new Image();
@@ -197,7 +197,7 @@ namespace PracticaRobot
                 }
                 image.Width = 30;
                 image.Height = 30;
-                image.Margin = new Thickness(700, 530, 730, 530);
+                image.Margin = new Thickness(700, 600, 730, 630);
                 TableroUI.Children.Add(image);
             }
         }
